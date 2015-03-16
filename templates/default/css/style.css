@@ -1,0 +1,32 @@
+.wrapper{
+	width: 900px;
+}
+.header{
+	border:1px solid grey; /*garis 1 px*/
+	background-color: blue;
+	color: white;
+	font-weight: bold;
+	font-size: 35px;
+	padding: 35px 10px;/*padding ==margin*/
+}
+.sidebar{
+	width: 170px;
+	float: left;
+	padding: 5px;
+	border: 1px solid black;
+	overflow: hidden; /*jika layar kurang dari 170px maka layar akan hidden*/
+}
+.content{
+	width: 706px;
+	float: right;
+	padding: 5px;
+}
+.footer{
+	text-align: center;
+	background: blue;
+	color: white;
+	padding: 21px 3px;
+}
+.clear{
+	clear: both;
+}

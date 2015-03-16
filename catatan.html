@@ -1,0 +1,32 @@
+<?php
+require_once('includes/cmsApplications.php'); //cuma perlu satu kali load
+
+//create object dari class CmsApplications
+$app = new CmsApplications();
+
+//cek user
+if (isset($_REQUEST['task'])){
+	/*
+	isset : memastikan bahwa variabel ada isinya atau tidak
+	$_REQUEST : variable built-in php 
+	yang berfungsi untuk memeriksa 
+	apakah yang di request oleh user ada atau tidak
+	*/
+	$task = $_REQUEST['task']; //variable task hanya akan berisi permintaan user
+	switch($task){ //cek isi task
+		case 'addcontent' : //jika task berisi addcontent(tanda petik berarti string)
+			$app->addcontent(); //yang akan dilakukan adalah <--
+			break;
+		case 'anyothertask' :
+			$app->anyothertask();
+			break;
+		default :
+			$app->viewcontent();
+	}
+} else {
+	//tidak menampilkan apa-apa
+	$app->viewcontent();
+	echo '<hr><br>user tidak ada request';
+	//jika user tidak menampilkan apapun, kita tampilkan isi defaultnya
+
+}
