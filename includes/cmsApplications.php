@@ -7,6 +7,31 @@ class CmsApplications extends CmsBase {
 	// dapat diakses melalui fungsi utama
 	// dalam CMS 
 	// management halaman web
+
+	function run() {
+	if (isset($_REQUEST['task'])){
+
+		$task = $_REQUEST['task']; 
+		switch($task){ 
+			case 'addcontent' : 
+				$this->addcontent(); 
+				break;
+			case 'anyothertask' :
+				$this->anyothertask();
+				break;
+			default :
+				$this->viewcontent();
+				echo '<hr><br>user tidak ada request';
+				break;
+		}
+	} 
+	else {
+		$this->viewcontent();
+		
+
+		}
+	}
+
 	function addcontent(){
 		echo 'Di sini akan dibuat fungsi menambah konten';
 	}
