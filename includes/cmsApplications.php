@@ -20,15 +20,13 @@ class CmsApplications extends CmsBase {
 				$this->anyothertask();
 				break;
 			default :
-				$this->viewcontent();
+				$this->display();
 				echo '<hr><br>user tidak ada request';
 				break;
 		}
 	} 
 	else {
-		$this->viewcontent();
-		
-
+		$this->display();
 		}
 	}
 
@@ -36,11 +34,11 @@ class CmsApplications extends CmsBase {
 		echo 'Di sini akan dibuat fungsi menambah konten';
 	}
 
-	function viewcontent(){
+	function display(){
 		echo 'Di sini akan dibuat fungsi untuk menampilkan konten';
 	}
 
 	function anyothertask(){
-		echo 'Di sini akan dibuat fungsi sesuatu';
+		echo 'Di sini akan dibuat fungsi yang lainnya';
 	}
 }

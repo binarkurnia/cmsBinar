@@ -5,6 +5,7 @@ class TemplateFunctions extends CmsBase {
 	// pengaturan template ada di sini
 
 	var $templateName = 'default';
+	var $widgetPosition = array();
 
 	function show(){
 		require_once($this->getCurrentTemplatePath() . 'template.php');
@@ -26,4 +27,30 @@ class TemplateFunctions extends CmsBase {
 		$app = new CmsApplications();
 		$app->run();
 	}
-}
+
+	function widgetOutput($position='default'){
+		if(!empty($this->widgetPosition[$position])){
+			$widgets=$this->widgetPosition[$position];
+			foreach($widgets as $widgetObject){
+				$widgetName = $widgetObject->name;
+				$widgetParameters = $widgetObject->paramenters;
+				require_once('widgets/'.$widgetName.'/'.$widgetName.'.php');
+				$widgetclass=ucfirst($widgetName).'Widget';
+				$widget = new $widgetclass();
+				$widget->run($widgetName,$widgetParameters);
+			}
+		}
+	}
+
+	function setWidget($position, $widgetName, $params = array()){
+		$widget = new StdClass;
+		$widget->name = $widgetName;
+		$widget->paramenters = $params;
+
+		if(empty($this->widgetPosition[$position])){
+			$this->widgetPosition[$position] = array($widget);
+		} else {
+			array_push($this->widgetPosition[$position], $widget);
+		}
+	}
+}?>
