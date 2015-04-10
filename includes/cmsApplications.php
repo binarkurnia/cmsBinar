@@ -18,4 +18,5 @@ class CmsApplications extends CmsBase {
 	}
 
 
+
 }
