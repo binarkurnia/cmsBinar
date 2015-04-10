@@ -23,8 +23,10 @@ class TemplateFunctions extends CmsBase {
 	//fungsi untuk menggabungkan template
 	//dengan management content
 	function appOutput(){
-		require_once('includes/cmsApplications.php');
-		$app = new CmsApplications();
+		$appname = (isset($_REQUEST['app']))?$_REQUEST['app']:'default';
+		require_once('apps/'.$appname.'/'.$appname.'.php');
+		$application = ucfirst($appname).'Application';
+		$app = new $application();
 		$app->run();
 	}
 

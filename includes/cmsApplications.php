@@ -9,36 +9,13 @@ class CmsApplications extends CmsBase {
 	// management halaman web
 
 	function run() {
-	if (isset($_REQUEST['task'])){
-
-		$task = $_REQUEST['task']; 
-		switch($task){ 
-			case 'addcontent' : 
-				$this->addcontent(); 
-				break;
-			case 'anyothertask' :
-				$this->anyothertask();
-				break;
-			default :
-				$this->display();
-				echo '<hr><br>user tidak ada request';
-				break;
-		}
-	} 
-	else {
-		$this->display();
-		}
-	}
-
-	function addcontent(){
-		echo 'Di sini akan dibuat fungsi menambah konten';
+		$method=(isset($_REQUEST['task']))?$_REQUEST['task']:'display';
+		$this->$method();
 	}
 
 	function display(){
-		echo 'Di sini akan dibuat fungsi untuk menampilkan konten';
+		echo 'this is base display';
 	}
 
-	function anyothertask(){
-		echo 'Di sini akan dibuat fungsi yang lainnya';
-	}
+
 }
